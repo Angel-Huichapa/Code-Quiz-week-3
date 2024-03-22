@@ -11,18 +11,6 @@ header {
     padding: 1em;
 }
 
-nav {
-    background-color: #555;
-    color: #fff;
-    padding: 0.5em;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
 nav li {
     display: inline;
     margin-right: 10px;
@@ -30,8 +18,8 @@ nav li {
 
 section {
     padding: 20px;
+    text-align: center;
 }
-
 footer {
     background-color: #333;
     color: #fff;

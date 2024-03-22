@@ -17,6 +17,17 @@ var initialsInput = document.getElementById("initials");
 
 // 3: End Quiz function, when the timer reaches 0 or all of the questions have been answered, display a form where the user can save their initials and score using local storage
 
+var quizArray = [
+  {
+    question: "What is the capital of France?",
+    choices: ["Paris", "London", "Berlin", "Madrid"],
+    correctAnswer: 0
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    choices: ["Jupiter", "Mars", "Venus", "Saturn"],
+    correctAnswer: 1
+  }];
 // Code Snippet taken from activity 9
 function setTime() {
   // Sets interval in variable

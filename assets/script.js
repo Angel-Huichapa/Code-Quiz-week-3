@@ -19,8 +19,8 @@ var initialsInput = document.getElementById("initials");
 
 var quizArray = [
   {
-    question: "What is the capital of France?",
-    choices: ["Paris", "London", "Berlin", "Madrid"],
+    question: "Is an array 0 index?",
+    choices: ["yes","no"],
     correctAnswer: 0
   },
   {

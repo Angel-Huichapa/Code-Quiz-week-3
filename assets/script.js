@@ -57,7 +57,7 @@ function displayQuiz() {
 
 // Start Quiz Event Listener
 startBtn.addEventListener("click", function() {
-    setTime();
+    setTime(); // Add this line to call the setTime function
     displayQuiz();
 });
 
@@ -74,3 +74,18 @@ saveScoreBtn.addEventListener("click", function() {
     console.log(secondsLeft + " " + initialsInput.value);
     // You can implement local storage logic here
 });
+// Set Time Function
+function setTime()
+{
+    var timer = setInterval(function() {
+        if (secondsLeft > 0) {
+            secondsLeft--;
+            timerEl.textContent = "Time: " + secondsLeft;
+        }
+        if (secondsLeft <= 0 || currentQuestionIndex >= quizArray.length)
+        {
+            clearInterval(timer);
+            endQuiz();
+        }
+    }, 1000);
+}

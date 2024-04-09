@@ -9,16 +9,22 @@
 <body>
     <header>
         <h1>Start quiz here</h1>
-        <button id="startBtn">Start Quiz</button>
-        <p id="timer"></p>
     </header>
+    <div id="quizSection">
+        <h1>Quiz</h1>
+        <div id="question"></div>
+        <div id="choices"></div>
+        <button id="startBtn">Start Quiz</button>
+        <div id="timer"></div>
+    </div>
 
-    <section id="quizSection">
-        <!-- Quiz content will be dynamically generated here -->
-    </section>
-
+    <div id="save-score" style="display: none;">
+        <h2>Save Your Score</h2>
+        <input type="text" id="initials" placeholder="Enter your initials">
+        <button id="random">Save Score</button>
+    </div>
     <footer>
-        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+        <p>&copy; 2023 Code Quiz. All rights reserved.</p>
     </footer>
 
     <script src="./assets/script.js"></script>

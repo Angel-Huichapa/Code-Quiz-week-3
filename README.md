@@ -3,27 +3,11 @@
 
 a timed quiz on JavaScript fundamentals that stores high scores made for class
 ## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+To test a student on JS basics
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
+Angel-Huichapa
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

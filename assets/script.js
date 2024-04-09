@@ -5,6 +5,7 @@ var secondsLeft = 10;
 var saveScoreBtn = document.getElementById("random");
 var initialsInput = document.getElementById("initials");
 
+
 // Global quiz array: This should contain an array of objects which contain the question and the choices (choices in an array)
 // Global iterator variable: This will just be a number that changes when you display next question
 
@@ -65,7 +66,7 @@ startBtn.addEventListener("click", function() {
 function endQuiz() {
     console.log('Quiz Ended');
     // Display the form for users to save initials and score
-    document.getElementById("quiz").style.display = "none";
+    document.getElementById("quizSection").style.display = "none";
     document.getElementById("save-score").style.display = "block";
 }
 

@@ -12,17 +12,38 @@ var initialsInput = document.getElementById("initials");
 // Functions: Timer Function, Quiz Logic (Display Questions and Choices), Event Listener (When you click on a choice, quiz functionality), Start Quiz Event Listener, End Quiz function, Save Score Function (Event listener, local storage)
 
 var quizArray = [
-  {
-    question: "Is an array 0 index?",
-    choices: ["yes","no"],
-    correctAnswer: 0
-  },
-  {
-    question: "Which planet is known as the Red Planet?",
-    choices: ["Jupiter", "Mars", "Venus", "Saturn"],
-    correctAnswer: 1
-  }
-];
+    {
+      question: "What does HTML stand for?",
+      choices: ["Hyper Text Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language", "Hyper Tool Multi Language"],
+      correctAnswer: 0
+    },
+    {
+      question: "Which HTML tag is used to define an internal style sheet?",
+      choices: ["<style>", "<css>", "<script>", "<head>"],
+      correctAnswer: 0
+    },
+    {
+      question: "What does CSS stand for?",
+      choices: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"],
+      correctAnswer: 1
+    },
+    {
+      question: "Which CSS property is used to change the text color of an element?",
+      choices: ["color", "font-color", "text-color", "font-style"],
+      correctAnswer: 0
+    },
+    {
+      question: "Which of the following is NOT a JavaScript data type?",
+      choices: ["boolean", "string", "number", "float"],
+      correctAnswer: 3
+    },
+    {
+      question: "Which method is used to stop setInterval() function from executing in JavaScript?",
+      choices: ["clearInterval()", "stopInterval()", "endInterval()", "breakInterval()"],
+      correctAnswer: 0
+    }
+  ];
+  
 
 var currentQuestionIndex = 0;
 
@@ -72,9 +93,21 @@ function endQuiz() {
 
 // Save Score Function
 saveScoreBtn.addEventListener("click", function() {
-    console.log(secondsLeft + " " + initialsInput.value);
-    // You can implement local storage logic here
+    var initials = initialsInput.value.trim(); // Get user initials and remove leading/trailing whitespace
+    if (initials !== "") {
+        var scoreData = {
+            initials: initials,
+            score: secondsLeft // Assuming secondsLeft represents the score
+        };
+        // Convert scoreData object to a JSON string and save it in local storage
+        localStorage.setItem("scoreData", JSON.stringify(scoreData));
+        console.log("Score saved:", scoreData);
+        // Optionally, you can redirect the user to a different page or perform other actions here
+    } else {
+        console.log("Please enter your initials.");
+    }
 });
+
 // Set Time Function
 function setTime()
 {
@@ -90,3 +123,18 @@ function setTime()
         }
     }, 1000);
 }
+// Function to display saved scores
+function displaySavedScores() {
+    var savedScores = localStorage.getItem("scoreData"); // Retrieve the saved score data from local storage
+    if (savedScores) {
+        var scoreData = JSON.parse(savedScores); // Parse the JSON string back into an object
+        // Display the saved initials and score in the HTML
+        var savedScoresContainer = document.getElementById("savedScores");
+        savedScoresContainer.innerHTML = "Initials: " + scoreData.initials + ", Score: " + scoreData.score;
+    } else {
+        console.log("No saved scores found.");
+    }
+}
+
+// Call the function to display saved scores when the page loads
+window.addEventListener("load", displaySavedScores);

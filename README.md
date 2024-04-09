@@ -3,7 +3,7 @@
 
 a timed quiz on JavaScript fundamentals that stores high scores made for class
 ## Usage
-To test a student on JS basics
+To test a student on JS, CSS, and HTML basics
 
 ## Contributing
 

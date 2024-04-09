@@ -1,8 +1,7 @@
-// Global variables 
+// Global variables
 var startBtn = document.getElementById("startBtn");
 var timerEl = document.getElementById("timer");
 var secondsLeft = 10;
-
 var saveScoreBtn = document.getElementById("random");
 var initialsInput = document.getElementById("initials");
 
@@ -10,12 +9,6 @@ var initialsInput = document.getElementById("initials");
 // Global iterator variable: This will just be a number that changes when you display next question
 
 // Functions: Timer Function, Quiz Logic (Display Questions and Choices), Event Listener (When you click on a choice, quiz functionality), Start Quiz Event Listener, End Quiz function, Save Score Function (Event listener, local storage)
-
-// 1: Create an html button to the start, when this button is clicked on, it should start the timer and display the quiz (Event Listener)
-
-// 2: Adding that event listener to your choices, then we can move on to the logic to check the choice, move on to the next question, determine if all questions have been answered
-
-// 3: End Quiz function, when the timer reaches 0 or all of the questions have been answered, display a form where the user can save their initials and score using local storage
 
 var quizArray = [
   {
@@ -27,37 +20,57 @@ var quizArray = [
     question: "Which planet is known as the Red Planet?",
     choices: ["Jupiter", "Mars", "Venus", "Saturn"],
     correctAnswer: 1
-  }];
-// Code Snippet taken from activity 9
-function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timerEl.textContent = secondsLeft;
+  }
+];
 
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to create and append image
-      endQuiz();
+var currentQuestionIndex = 0;
+
+// Display Quiz Function
+function displayQuiz() {
+    var currentQuestion = quizArray[currentQuestionIndex];
+    document.getElementById("question").textContent = currentQuestion.question;
+    var choices = document.getElementById("choices");
+    choices.innerHTML = "";
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        var choice = document.createElement("button");
+        choice.textContent = currentQuestion.choices[i];
+        choice.setAttribute("data-index", i);
+        choice.addEventListener("click", function(event) {
+            var userChoice = parseInt(event.target.getAttribute("data-index"));
+            if (userChoice === currentQuestion.correctAnswer) {
+                // Correct answer logic
+                console.log("Correct!");
+            } else {
+                // Incorrect answer logic
+                console.log("Incorrect!");
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizArray.length) {
+                displayQuiz();
+            } else {
+                endQuiz();
+            }
+        });
+        choices.appendChild(choice);
     }
+}
 
-  }, 1000);
-};
-
-// Create a display quiz function (Create and Append, Loop)
-
-function endQuiz() {
-    console.log('Quiz Ended');
-    // Display the form for users to save initials and score 
-};
-
+// Start Quiz Event Listener
 startBtn.addEventListener("click", function() {
-    // Call timer function and quiz display function
     setTime();
-    // Call your display quiz function
+    displayQuiz();
 });
 
+// End Quiz Function
+function endQuiz() {
+    console.log('Quiz Ended');
+    // Display the form for users to save initials and score
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("save-score").style.display = "block";
+}
+
+// Save Score Function
 saveScoreBtn.addEventListener("click", function() {
     console.log(secondsLeft + " " + initialsInput.value);
-})
+    // You can implement local storage logic here
+});
